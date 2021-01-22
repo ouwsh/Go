@@ -16,6 +16,38 @@
   `wget --no-check-certificate -O gost.sh https://raw.githubusercontent.com/KANIKIG/Multi-EasyGost/master/gost.sh && chmod +x gost.sh && ./gost.sh`  
 * 再次运行本脚本只需要输入`./gost.sh`回车即可  
 
+1、查看firewall服务状态
+
+systemctl status firewalld
+
+
+2、查看firewall的状态
+
+firewall-cmd --state
+ 
+
+3、开启、重启、关闭、firewalld.service服务
+
+# 开启
+service firewalld start
+# 重启
+service firewalld restart
+# 关闭
+service firewalld stop
+4、查看防火墙规则
+
+firewall-cmd --list-all 
+
+# 查询端口是否开放
+firewall-cmd --query-port=8080/tcp
+# 开放80端口
+firewall-cmd --permanent --add-port=80/tcp
+# 移除端口
+firewall-cmd --permanent --remove-port=8080/tcp
+
+#重启防火墙(修改配置后要重启防火墙)
+firewall-cmd --reload
+
 ## 功能
 
 ### 原脚本功能
